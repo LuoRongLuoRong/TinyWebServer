@@ -1,0 +1,12 @@
+
+*.o
+*.out
+*.tmp
+*.bc
+cmake-build-debug/
+.idea/
+.vscode/
+
+output/
+build/
+server
