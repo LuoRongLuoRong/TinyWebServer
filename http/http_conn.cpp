@@ -283,6 +283,7 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char *text)
     if (strlen(m_url) == 1)
         strcat(m_url, "judge.html");
     m_check_state = CHECK_STATE_HEADER;
+    LOG_INFO("m_check_state = %s", m_check_state);
     return NO_REQUEST;
 }
 
@@ -321,7 +322,7 @@ http_conn::HTTP_CODE http_conn::parse_headers(char *text)
     }
     else
     {
-        LOG_INFO("oop!unknow header: %s", text);
+        LOG_INFO("oop!unknown header: %s", text);
     }
     return NO_REQUEST;
 }
@@ -349,7 +350,7 @@ http_conn::HTTP_CODE http_conn::process_read()
     {
         text = get_line();
         m_start_line = m_checked_idx;
-        LOG_INFO("%s", text);
+        LOG_INFO("m_check_state = %s; line_status = %s", m_check_state, line_status);
         switch (m_check_state)
         {
         case CHECK_STATE_REQUESTLINE:
@@ -592,8 +593,6 @@ bool http_conn::add_response(const char *format, ...)
     }
     m_write_idx += len;
     va_end(arg_list);
-
-    LOG_INFO("request:%s", m_write_buf);
 
     return true;
 }
