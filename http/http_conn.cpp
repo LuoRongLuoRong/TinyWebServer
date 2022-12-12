@@ -283,7 +283,7 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char *text)
     if (strlen(m_url) == 1)
         strcat(m_url, "judge.html");
     m_check_state = CHECK_STATE_HEADER;
-    LOG_INFO("m_check_state = %s", m_check_state);
+    LOG_INFO("m_check_state = %d", m_check_state);
     return NO_REQUEST;
 }
 
@@ -350,7 +350,7 @@ http_conn::HTTP_CODE http_conn::process_read()
     {
         text = get_line();
         m_start_line = m_checked_idx;
-        LOG_INFO("m_check_state = %s; line_status = %s", m_check_state, line_status);
+        LOG_INFO("m_check_state = %d; line_status = %d", m_check_state, line_status);
         switch (m_check_state)
         {
         case CHECK_STATE_REQUESTLINE:
