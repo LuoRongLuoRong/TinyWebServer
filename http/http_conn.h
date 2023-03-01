@@ -122,6 +122,7 @@ private:
     int m_start_line;
     char m_write_buf[WRITE_BUFFER_SIZE];
     int m_write_idx;
+    int line_key = 0;
     CHECK_STATE m_check_state;
     METHOD m_method;
     char m_real_file[FILENAME_LEN];

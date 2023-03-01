@@ -138,6 +138,9 @@ void http_conn::init()
     mysql = NULL;
     bytes_to_send = 0;
     bytes_have_send = 0;
+    LOG_INFO("line_key = %d", line_key);
+    line_key = 1;
+    LOG_INFO("line_key = %d", line_key);
     m_check_state = CHECK_STATE_REQUESTLINE;
     m_linger = false;
     m_method = GET;
@@ -282,6 +285,8 @@ http_conn::HTTP_CODE http_conn::parse_request_line(char *text)
     //当url为/时，显示判断界面
     if (strlen(m_url) == 1)
         strcat(m_url, "judge.html");
+    line_key = 2;
+    LOG_INFO("line_key = %d", line_key);
     m_check_state = CHECK_STATE_HEADER;
     LOG_INFO("m_check_state = %d", m_check_state);
     return NO_REQUEST;
@@ -294,6 +299,8 @@ http_conn::HTTP_CODE http_conn::parse_headers(char *text)
     {
         if (m_content_length != 0)
         {
+            line_key = 3;
+            LOG_INFO("line_key = %d", line_key);
             m_check_state = CHECK_STATE_CONTENT;
             return NO_REQUEST;
         }
