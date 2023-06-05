@@ -1,0 +1,31 @@
+digraph StateModel {
+node [fontname="Microsoft YaHei"];
+edge [fontname="Microsoft YaHei"];
+graph [fontname="Microsoft YaHei"];
+  label = "状态机图抽取结果"
+  // graph-vertices
+  v1 [label="state={m_check_state=2}"];
+  v2 [label="state={m_check_state=1}"];
+  v3 [label="state={m_check_state=null}"];
+  v4 [label="state={m_check_state=0}"];
+  // graph-edges
+  v2 -> v4  [label="关键变量line_key[http\http_conn.cpp@L141]赋值为[2]
+关键变量line_key[http\http_conn.cpp@L142]赋值为[1]
+关键变量line_key[http\http_conn.cpp@L143]赋值为[1]
+"];
+  v1 -> v4  [label="关键变量line_key[http\http_conn.cpp@L141]赋值为[3]
+关键变量line_key[http\http_conn.cpp@L142]赋值为[1]
+关键变量line_key[http\http_conn.cpp@L143]赋值为[1]
+"];
+  v4 -> v2  [label="关键变量line_key[http\http_conn.cpp@L288]赋值为[2]
+关键变量line_key[http\http_conn.cpp@L289]赋值为[2]
+"];
+  v3 -> v4  [label="关键变量line_key[http\http_conn.cpp@L141]赋值为[0]
+关键变量line_key[http\http_conn.cpp@L142]赋值为[1]
+关键变量line_key[http\http_conn.cpp@L143]赋值为[1]
+"];
+  v2 -> v1  [label="关键变量line_key[http\http_conn.cpp@L302]赋值为[3]
+关键变量line_key[http\http_conn.cpp@L303]赋值为[3]
+"];
+  // end-of-graph
+}
